@@ -1,0 +1,8 @@
+{
+  "name": "legalpro-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "preview": "npx serve -s public -l 8080"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SGLPWEB - LegalPro</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Sistema de Gestión Legal - LegalPro</h1>
+
+  <div class="card" id="login-section">
+    <h2>Iniciar Sesión</h2>
+    <input type="email" id="email" placeholder="Correo electrónico" />
+    <input type="password" id="password" placeholder="Contraseña" />
+    <button onclick="login()">Entrar</button>
+    <p id="login-error" style="color: red;"></p>
+    <p class="switch-text">¿No tienes cuenta? <a href="#" onclick="showRegister()">Regístrate aquí</a></p>
+  </div>
+
+  <div class="card" id="register-section" style="display: none;">
+    <h2>Registro</h2>
+    <input type="text" id="reg-name" placeholder="Nombre completo" />
+    <input type="email" id="reg-email" placeholder="Correo electrónico" />
+    <input type="password" id="reg-password" placeholder="Contraseña" />
+    <select id="reg-role" required>
+      <option value="">Seleccione un rol</option>
+      <option value="cliente">Cliente</option>
+      <option value="abogado">Abogado</option>
+      <option value="admin">Administrador</option>
+    </select>
+    <button onclick="register()">Registrar</button>
+    <p id="register-error" class="error-text"></p>
+    <p class="switch-text">¿Ya tienes cuenta? <a href="#" onclick="showLogin()">Inicia sesión aquí</a></p>
+  </div>
+
+  <div id="dashboard" style="display: none;">
+    <h2 id="welcome">Bienvenido</h2>
+
+    <div id="case-form-section" style="display: none; margin-top: 2rem;">
+        <h3>Crear nuevo caso</h3>
+        <form id="case-form" onsubmit="createCase(event)">
+            <label for="referenceCode">Código de referencia:</label>
+            <input type="text" id="referenceCode" required>
+
+            <label for="caseType">Tipo de caso:</label>
+            <input type="text" id="caseType" required>
+
+            <label for="startDate">Fecha de inicio:</label>
+            <input type="date" id="startDate" required>
+
+            <label for="details">Detalles:</label>
+            <textarea id="details" required></textarea>
+
+            <label for="clientId">Seleccionar cliente:</label>
+            <select id="clientId" required>
+            <option value="">Cargando clientes...</option>
+            </select>
+
+            <label for="lawyerId">Abogado Selecionado:</label>
+            <select id="lawyerId" required>
+            <option value="">Cargando abogados...</option>
+            </select>
+
+            <button type="submit">Guardar caso</button>
+        </form>
+        <p id="case-error" style="color: red;"></p>
+        <h3>Notificaciones</h3>
+        <div id="notifications-container"></div>
+    </div>
+
+    <h3>Casos</h3>
+    <div id="cases-container"></div>
+    <button onclick="logout()">Cerrar sesión</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
